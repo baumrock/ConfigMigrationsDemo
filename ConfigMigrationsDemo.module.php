@@ -25,4 +25,10 @@ class ConfigMigrationsDemo extends WireData implements Module
       'installs' => [],
     ];
   }
+
+  public function ___uninstall(): void
+  {
+    rockmigrations()->deleteFields("tags=$this");
+    rockmigrations()->deleteTemplates("tags=$this");
+  }
 }
